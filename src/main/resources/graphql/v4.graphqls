@@ -1,0 +1,21 @@
+type Task {
+    id: ID!
+    title: String!
+    description: String
+    employee: Employee
+}
+
+input TaskRequestDto {
+    title: String!
+    description: String
+    employeeId: ID!
+}
+
+extend type Query {
+    tasks: [Task]
+    task(id: ID!): Task!
+}
+
+extend type Mutation {
+    newTask(task: TaskRequestDto!): Task
+}
